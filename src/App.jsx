@@ -4,6 +4,7 @@ import CreateEvent from "./components/CreateEvent";
 import Auth from "./pages/Auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Join from "./components/Join";
+import UserEvents from "./pages/UserEvents/Index";
 import "./App.css";
 import Home from "./pages/Home";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/Auth" element={<Auth />} />
           <Route path="/createEvent" element={<CreateEvent />} />
           <Route path="/event:id" element={<Join />} />
+          <Route path="/UserEvents" element={<UserEvents />} />
         </Routes>
       </BrowserRouter>
 
