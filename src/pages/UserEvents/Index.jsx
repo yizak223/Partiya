@@ -4,7 +4,7 @@ import { UserContext } from '../../components/context/User'
 import { onAuthStateChanged } from '@firebase/auth'
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from '../../config/fireBaseConfig'
-import '../UserEvents/userEvent.css'
+import '../UserEvents/userEvent.css';
 import Modal from '../../components/Modal';
 
 export default function UserEvents() {
@@ -50,7 +50,7 @@ export default function UserEvents() {
                     )
                 })
             }
-             {modalOpen && <Modal setOpenModal={setModalOpen} />}
+             {modalOpen && <Modal  setOpenModal={setModalOpen} />}
             </div>
         </div>
     )
