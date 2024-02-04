@@ -3,6 +3,7 @@ import React from 'react'
 function CreateEvent() {
   return (
     <div>
+      <h1>Great! now pick your planing</h1>
       <h5>Picnic</h5>
       <h5>Sea</h5>
       <h5>Trip</h5>
