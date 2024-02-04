@@ -1,12 +1,15 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { callOpenAIAPI } from "../../config/openAiConfig";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../config/fireBaseConfig";
+import { UserContext } from "../../components/context/User";
 
 function CreateEvent() {
   const [formData, setFormData] = useState([]);
 
   const [items, setItems] = useState([]);
-  const [newItem, setNewItem] = useState();
+  const [newItem, setNewItem] = useState({});
+  const {user} = useContext(UserContext);
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,8 +20,12 @@ function CreateEvent() {
     e.preventDefault();
     const answer = ` ${formData.activity} at ${formData.place}, in ${formData.location} for ${formData.numOfP} people from ${formData.from} till ${formData.to}`;
     const response = await callOpenAIAPI(answer);
-    setItems(response);
+    const newItems = response.map((item) => {
+      return { itemName: item, whoBrings: [] };
+    });
     console.log(response);
+    setItems(newItems);
+    console.log({items})
   };
 
   const removeItem = (itemIndex) =>{
@@ -29,12 +36,17 @@ function CreateEvent() {
 
   const addItem = (e) =>{
     e.preventDefault();
-    setItems([...items, newItem])
+    setItems([...items, {itemName: newItem, whoBrings: []}])
     setNewItem('');
   }
 
   const newItemHandler = (e) =>{
     setNewItem(e.target.value);
+  }
+
+  const addEventToDB = async() =>{
+    const docRef = await addDoc(collection(db, "events"), {...formData, managerID: user.id, items: items});
+    console.log("Event has been added to 'events' with the ID:", docRef.id);
   }
 
   return (
@@ -91,14 +103,20 @@ function CreateEvent() {
       {items.length > 0 ? (
         <div>
           {items.map((item, index) => {
-            return <p key={index}>{item}<button onClick={() => removeItem(index)}><i class="bi bi-x"></i></button></p>;
+            return (
+              <div key={index}>
+                <p>{item.itemName}</p>
+                <button onClick={() => removeItem(index)}><i className="bi bi-x"></i></button>
+              </div>
+            );
           })}
           <form onSubmit={addItem}>
             <input type="text" placeholder="Add another item:" onChange={newItemHandler}/>
             <button>Add +</button>
           </form>
         </div>
-      ) : null}
+      ) : <h1>no items{console.log({items})}</h1>}
+      <button onClick={addEventToDB}>Let's start the party!</button>
     </div>
   );
 }
