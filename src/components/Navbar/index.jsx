@@ -4,6 +4,7 @@ import "./NavBar.css";
 import { UserContext } from "../context/User";
 import { useContext } from "react";
 
+
 function Navbar() {
   const { user, currentUser, userSignOut } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +30,9 @@ function Navbar() {
               </Link>
               <Link to="/" className="link" onClick={toggleMenu}>
                 Home
+              </Link>
+              <Link to="/Test" className="link" onClick={toggleMenu}>
+                test
               </Link>
              {user? <Link to="/UserEvents" className="link" onClick={toggleMenu}>
                 MY-Events
