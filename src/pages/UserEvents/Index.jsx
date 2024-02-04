@@ -19,7 +19,7 @@ export default function UserEvents() {
                 if (user) {
                     const userRef = doc(db, "users", user.uid);
                     const userSnap = await getDoc(userRef);
-                    const events = userSnap.data().events;
+                    const events = userSnap.data().eventPIN;
                     setEvents(events);
                     console.log(events);
                 }
