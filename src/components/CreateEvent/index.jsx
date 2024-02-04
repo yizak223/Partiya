@@ -20,6 +20,12 @@ function CreateEvent() {
     console.log(response);
   };
 
+  const removeItem = (itemIndex) =>{
+    setItems(prevData => (
+      prevData.filter((item, index) => index !== itemIndex)
+    ))
+  }
+
   return (
     <div>
       <form onSubmit={submitHandler}>
@@ -74,7 +80,7 @@ function CreateEvent() {
       {items.length > 0 ? (
         <div>
           {items.map((item, index) => {
-            return <p key={index}>{item}</p>;
+            return <p key={index}>{item}<button onClick={() => removeItem(index)}><i class="bi bi-x"></i></button></p>;
           })}
         </div>
       ) : null}
