@@ -10,10 +10,15 @@ function Navbar() {
   };
 
   return (
-    <header>
+    <header className={`header${isMenuOpen ? "open" : ""}`}>
       <div>
         <nav className="navBar">
           <div>
+            <div className="hamburger" onClick={toggleMenu}>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+            </div>
             <div className={`menuContainer ${isMenuOpen ? "open" : ""}`}>
               <h1>CoolLogo</h1>
               <Link to="/Auth" className="link" onClick={toggleMenu}>
@@ -23,15 +28,8 @@ function Navbar() {
                 Home
               </Link>
             </div>
-            <div className="hamburger" onClick={toggleMenu}>
-              <div className="line"></div>
-              <div className="line"></div>
-              <div className="line"></div>
-            </div>
           </div>
-          <div>
-            <p className="PartiyaLogo">Partiya</p>
-          </div>
+          <h1 className="logo">Partiya</h1>
         </nav>
       </div>
     </header>
