@@ -1,7 +1,7 @@
 import React from "react";
 import "./Modal.css";
 
-function Modal({ setOpenModal }) {
+function Modal({ setOpenModal, itemName }) {
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -15,7 +15,7 @@ function Modal({ setOpenModal }) {
           </button>
         </div>
         <div className="title">
-          <h1>Item </h1>
+          <h1>Item {itemName}</h1>
         </div>
         <div className="body">
           <p>This item bring: ...</p>
