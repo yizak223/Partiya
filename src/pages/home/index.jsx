@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Join from '../../components/Join'
 import { useNavigate } from 'react-router'
 import '../home/Home.css'
 
 
 function Home() {
-  const navigate = useNavigate()
+  const [toggleJoin, setToggleJoin]= useState(false)
+    const navigate = useNavigate()
   const pathToCreate = ()=>{
     navigate('/createEvent')
   }
   const pathToJoin = ()=>{
-    navigate('event:id')
+    setToggleJoin(!toggleJoin)
   }
     return (
     <div className="home">
@@ -18,6 +19,7 @@ function Home() {
       <div className="homeBtns">
         <button className='btnEvent' onClick={pathToCreate}>Create Event</button><br />
         <button className='btnEvent' onClick={pathToJoin}>Join Event</button>
+        {toggleJoin? <Join/> :null}
       </div>
     </div>
   )
