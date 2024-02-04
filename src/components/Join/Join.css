@@ -5,7 +5,9 @@
     padding: 10px;
     color: #be09b8;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 15px 0 0 0;
 }
+
 
 .BtnPin {
     background-color: #b82292;
