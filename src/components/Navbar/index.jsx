@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { UserContext } from "../context/User";
+import { useContext } from "react";
 
 function Navbar() {
+  const { currentUser, userSignOut } = useContext(UserContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -30,7 +33,10 @@ function Navbar() {
             </div>
           </div>
           <div>
-            <p className="PartiyaLogo">Partiya</p>
+          {currentUser ? 
+            (<button onClick={userSignOut}><i className="bi bi-box-arrow-right"></i> Sign out,<span> <b>{currentUser.nickname}</b></span></button>)
+             : (<Link to ="/Auth"><i className="bi bi-box-arrow-in-right"></i> Login</Link>)
+             }
           </div>
         </nav>
       </div>
