@@ -5,8 +5,10 @@ import { onAuthStateChanged } from '@firebase/auth'
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from '../../config/fireBaseConfig'
 import '../UserEvents/userEvent.css'
+import Modal from '../../components/Modal';
 
 export default function UserEvents() {
+    const [modalOpen, setModalOpen] = useState(false);
     const { user, currentUser } = useContext(UserContext)
     const [events, setEvents] = useState([])
     useEffect(() => {
@@ -28,6 +30,7 @@ export default function UserEvents() {
 
     return (
         <div>
+            <div className="App">
             <h1> {currentUser?.nickname} events</h1>
             {
                 !events ?
@@ -40,11 +43,15 @@ export default function UserEvents() {
                 events?.map((event, index) => {
                     return (
                         <div className='eventContainer' key={index}>
-                            <h2>{event}</h2>
+                            <h2 onClick={() => {
+                                setModalOpen(true);
+                            }}>{event}</h2>
                         </div>
                     )
                 })
             }
+             {modalOpen && <Modal setOpenModal={setModalOpen} />}
+            </div>
         </div>
     )
 }
