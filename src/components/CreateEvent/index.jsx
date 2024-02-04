@@ -6,6 +6,7 @@ function CreateEvent() {
   const [formData, setFormData] = useState([]);
 
   const [items, setItems] = useState([]);
+  const [newItem, setNewItem] = useState();
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,6 +25,16 @@ function CreateEvent() {
     setItems(prevData => (
       prevData.filter((item, index) => index !== itemIndex)
     ))
+  }
+
+  const addItem = (e) =>{
+    e.preventDefault();
+    setItems([...items, newItem])
+    setNewItem('');
+  }
+
+  const newItemHandler = (e) =>{
+    setNewItem(e.target.value);
   }
 
   return (
@@ -82,6 +93,10 @@ function CreateEvent() {
           {items.map((item, index) => {
             return <p key={index}>{item}<button onClick={() => removeItem(index)}><i class="bi bi-x"></i></button></p>;
           })}
+          <form onSubmit={addItem}>
+            <input type="text" placeholder="Add another item:" onChange={newItemHandler}/>
+            <button>Add +</button>
+          </form>
         </div>
       ) : null}
     </div>
