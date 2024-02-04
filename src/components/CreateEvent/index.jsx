@@ -4,8 +4,10 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../config/fireBaseConfig";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../components/context/User";
+import { useNavigate } from "react-router";
 
 function CreateEvent() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState([]);
   const [amount, setAmount] = useState();
   const [items, setItems] = useState([]);
@@ -29,6 +31,7 @@ function CreateEvent() {
     console.log(response);
     setItems(newItems);
     console.log({items})
+    navigate('/')
   };
 
   const removeItem = (itemIndex) =>{
