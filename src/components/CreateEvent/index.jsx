@@ -61,11 +61,10 @@ function CreateEvent() {
 
 
   useEffect(() => {
-    // Check if the event ID is defined and user events array is not empty
     if (eventID && userEvents.length > 0) {
       addEvent();
     }
-  }, [eventID, userEvents]); // Run this effect whenever event ID or user events array changes
+  }, [eventID, userEvents]); 
   
   const addEventToDB = async () => {
     try {
@@ -74,10 +73,9 @@ function CreateEvent() {
         managerID: user.id,
         items: items,
       });
-      const eventId = docRef.id; // Get event ID
+      const eventId = docRef.id;
       console.log("Event has been added to 'events' with the ID:", eventId);
-      setEventID(eventId); // Set event ID in state
-      // Now, you can call addEvent right after setting the eventID
+      setEventID(eventId);
       addEvent(eventId);
     } catch (error) {
       console.error('Error adding event:', error);
