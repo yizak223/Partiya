@@ -5,7 +5,7 @@ import Auth from "./pages/Auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Join from "./components/Join";
 import "./App.css";
-import Home from "./pages/Home";
+import Home from "./pages/home";
 
 function App() {
   return (
