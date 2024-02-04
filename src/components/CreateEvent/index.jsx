@@ -1,18 +1,74 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
+import { callOpenAIAPI } from "../../config/openAiConfig";
 
 function CreateEvent() {
+  const [formData, setFormData] = useState([]);
+
+  const changeHandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const answer = ` ${formData.activity} at ${formData.place}, in ${formData.location} for ${formData.numOfP} people from ${formData.from} till ${formData.to}`;
+    const response = await callOpenAIAPI(answer);
+    console.log(response);
+  };
+
   return (
     <div>
-      <h1>Great! now pick your planing</h1>
-      <h5>Picnic</h5>
-      <h5>Sea</h5>
-      <h5>Trip</h5>
-      <h5>Camping</h5>
-      <h5>Flight</h5>
-      <h5>Cultural Exploration</h5>
-      <h5>Other</h5>
+      <form onSubmit={submitHandler}>
+        <label>The Name</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Pratiya"
+          onChange={changeHandler}
+        />
+
+        <label>Kind of activity</label>
+        <input
+          type="text"
+          name="activity"
+          placeholder="Pratiya"
+          onChange={changeHandler}
+        />
+
+        <label>The Place</label>
+        <input
+          type="text"
+          name="place"
+          placeholder="Sea, Forest, hiils..."
+          onChange={changeHandler}
+        />
+
+        <label>The Location</label>
+        <input
+          type="text"
+          name="location"
+          placeholder="country / city"
+          onChange={changeHandler}
+        />
+
+        <label>How many</label>
+        <input
+          type="number"
+          name="numOfP"
+          placeholder="20, 5, 10..."
+          onChange={changeHandler}
+        />
+
+        <label>Dates</label>
+        <label>From</label>
+        <input type="date" name="from" onChange={changeHandler} />
+        <label>To</label>
+        <input type="date" name="to" onChange={changeHandler} />
+        <button type="submit">Generate</button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default CreateEvent
+export default CreateEvent;
