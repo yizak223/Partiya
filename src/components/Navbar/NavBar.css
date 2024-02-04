@@ -32,4 +32,12 @@
   .open .line:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -5px);
   }
+  .navBar{
+    display: flex;
+    justify-content: space-between;
+  }
+  .PartiyaLogo{
+    color: rgb(42, 71, 201);
+    font-weight: 900;
+  }
   
