@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
+import CreateEvent from "./components/CreateEvent";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CreateEvent from "./components/CreateEvent";
 import Join from "./components/Join";
 import "./App.css";
 
