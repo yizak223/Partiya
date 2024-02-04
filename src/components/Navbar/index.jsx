@@ -5,7 +5,7 @@ import { UserContext } from "../context/User";
 import { useContext } from "react";
 
 function Navbar() {
-  const { currentUser, userSignOut } = useContext(UserContext)
+  const { currentUser, userSignOut } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -30,24 +30,26 @@ function Navbar() {
               <Link to="/" className="link" onClick={toggleMenu}>
                 Home
               </Link>
-              <Link to='/UserEvents' className="link" onClick={toggleMenu}>
-              MY-Events
+              <Link to="/UserEvents" className="link" onClick={toggleMenu}>
+                MY-Events
               </Link>
-            </div>
-
-            <div className="hamburger" onClick={toggleMenu}>
-              <div className="line"></div>
-              <div className="line"></div>
-              <div className="line"></div>
             </div>
           </div>
           <div>
-          {currentUser ? 
-            (<button onClick={userSignOut}><i className="bi bi-box-arrow-right"></i> Sign out,<span> <b>{currentUser.nickname}</b></span></button>)
-             : (<Link to ="/Auth"><i className="bi bi-box-arrow-in-right"></i> Login</Link>)
-             }
+            {currentUser ? (
+              <button onClick={userSignOut}>
+                <i className="bi bi-box-arrow-right"></i> Sign out,
+                <span>
+                  {" "}
+                  <b>{currentUser.nickname}</b>
+                </span>
+              </button>
+            ) : (
+              <Link to="/Auth">
+                <i className="bi bi-box-arrow-in-right"></i> Login
+              </Link>
+            )}
           </div>
-          
           <h1 className="logo">Partiya</h1>
         </nav>
       </div>
