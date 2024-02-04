@@ -30,6 +30,9 @@ function Navbar() {
               <Link to="/" className="link" onClick={toggleMenu}>
                 Home
               </Link>
+              <Link to='/UserEvents' className="link" onClick={toggleMenu}>
+              MY-Events
+              </Link>
             </div>
 
             <div className="hamburger" onClick={toggleMenu}>
