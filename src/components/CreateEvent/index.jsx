@@ -6,7 +6,7 @@ import { UserContext } from "../../components/context/User";
 
 function CreateEvent() {
   const [formData, setFormData] = useState([]);
-
+  const [amount, setAmount] = useState();
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState({});
   const {user} = useContext(UserContext);
@@ -33,16 +33,29 @@ function CreateEvent() {
       prevData.filter((item, index) => index !== itemIndex)
     ))
   }
-
-  const addItem = (e) =>{
+  const newItemHandler = (e) =>{
+    setNewItem(e.target.value);
+  }
+  
+  const submitNewItem = (e) =>{
     e.preventDefault();
     setItems([...items, {itemName: newItem, whoBrings: []}])
     setNewItem('');
   }
 
-  const newItemHandler = (e) =>{
-    setNewItem(e.target.value);
+  const submitAmount = (index) => (e) => {
+    e.preventDefault();
+    const updatedItems = [...items];
+    updatedItems[index].amount = amount; 
+    setItems(updatedItems);
+    setAmount(''); 
+    console.log({items});
+  };
+  
+  const amountHandler = (e) =>{
+    setAmount(e.target.value);
   }
+
 
   const addEventToDB = async() =>{
     const docRef = await addDoc(collection(db, "events"), {...formData, managerID: user.id, items: items});
@@ -107,10 +120,14 @@ function CreateEvent() {
               <div key={index}>
                 <p>{item.itemName}</p>
                 <button onClick={() => removeItem(index)}><i className="bi bi-x"></i></button>
+                <form onSubmit={submitAmount(index)}>
+                  <input type="number" placeholder="Amount" onChange={amountHandler}/>
+                  <button>Add amount</button>
+                </form>
               </div>
             );
           })}
-          <form onSubmit={addItem}>
+          <form onSubmit={submitNewItem}>
             <input type="text" placeholder="Add another item:" onChange={newItemHandler}/>
             <button>Add +</button>
           </form>
