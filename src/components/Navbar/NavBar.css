@@ -16,28 +16,20 @@
   .line {
     width: 25px;
     height: 3px;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     margin: 3px 0;
     transition: all 0.3s ease;
   }
-  
-  .open .line:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 5px);
-  }
-  
-  .open .line:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .open .line:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -5px);
-  }
-  .navBar{
+
+  .navBar {
     display: flex;
     justify-content: space-between;
+    align-items: center; 
   }
-  .PartiyaLogo{
+  
+  .logo {
     color: rgb(42, 71, 201);
     font-weight: 900;
+    margin: 0; 
   }
   

@@ -1,29 +1,59 @@
-.home{
-    margin: 10px 0 0 0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(26, 179, 6, 0.1);
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-image: linear-gradient(rgba(6, 4, 30, 0.804), rgba(4, 9, 30, 0.087)),
+    url("../../assets/images/campingBackG2.jpg");
+  background-position: center;
+  height: 92vh;
+  padding: 10px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
 
-    background-color: rgba(210, 210, 183, 0.63);
-    padding: 10px;
-    text-align: center;
-    color: rgb(56, 56, 227);
+.titelsContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 130px;
+  width: 100%;
 }
-.homeBtns{
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+
+.titelsContainer h1 {
+  font-size: 60px;
+  margin: 0;
+  letter-spacing: 12px;
 }
-.btnEvent{
-    background-color: #22b822;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+
+.titelsContainer h2 {
+  margin: 0 0 130px 0;
+  color: #696969;
+  font-size: 25px;
+  font-weight: 600;
 }
-.secondTitle{
-    font-weight: 500;
-    color: rgb(82, 175, 215);
+
+.homeBtns {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnEvent {
+  margin: 10px;
+  width: 210px;
+  height: 50px;
+  font-size: 17px;
+  font-weight: 600;
+  text-shadow: 0 0 3px black;
+  background-color: #3953d4;
+  color: #dfdfdf;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.secondTitle {
+  font-weight: 500;
+  color: rgb(82, 175, 215);
 }

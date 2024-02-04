@@ -8,7 +8,7 @@ function Join() {
   return (
     <div className='containerJoin'>
       <form onSubmit={join}>
-        <h2>Great! please enter the PIN Code</h2>
+        <h2>Enter PIN Code</h2>
         <input  className='inputPin' type="text" placeholder='Enter PIN Code'/>
         <button className='BtnPin' type="submit">Join</button>
       </form>
