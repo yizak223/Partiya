@@ -2,7 +2,7 @@ function Login(props){
 
   return (
       <div className="loginCont">
-          <h2>Resume<span className="matrix">Matrix</span></h2>
+          <h2>Partiya</h2>
           <p>Login</p>
           <form className="authForm" onSubmit={props.submitHandler}>
               <input
