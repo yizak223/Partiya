@@ -12,7 +12,7 @@ const callOpenAIAPI = async (answer) => {
       {
         role: "system",
         content:
-          "Generate a list of items needed for a provided activity. The list should not have numbers and it will contain only one item per list item.",
+          "Generate a list of items needed for a provided activity. The list should not have numbers only the item and no arrows, it will contain only one item(one word) per list item. Also take in mind the time length of activity and the season.",
       },
       {
         role: "user",
@@ -24,10 +24,9 @@ const callOpenAIAPI = async (answer) => {
     top_p: 1,
   });
 
-  const list = response.choices[0];
+  const list = response.choices[0].message.content.split("\n");
 
 
-  
   return list;
 };
 

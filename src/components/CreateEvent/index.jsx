@@ -5,6 +5,8 @@ import { callOpenAIAPI } from "../../config/openAiConfig";
 function CreateEvent() {
   const [formData, setFormData] = useState([]);
 
+  const [items, setItems] = useState([]);
+
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     console.log(formData);
@@ -14,6 +16,7 @@ function CreateEvent() {
     e.preventDefault();
     const answer = ` ${formData.activity} at ${formData.place}, in ${formData.location} for ${formData.numOfP} people from ${formData.from} till ${formData.to}`;
     const response = await callOpenAIAPI(answer);
+    setItems(response);
     console.log(response);
   };
 
@@ -67,6 +70,14 @@ function CreateEvent() {
         <input type="date" name="to" onChange={changeHandler} />
         <button type="submit">Generate</button>
       </form>
+
+      {items.length > 0 ? (
+        <div>
+          {items.map((item, index) => {
+            return <p key={index}>{item}</p>;
+          })}
+        </div>
+      ) : null}
     </div>
   );
 }
