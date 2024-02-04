@@ -4,8 +4,10 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../config/fireBaseConfig";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../components/context/User";
+import { useNavigate } from "react-router";
 
 function CreateEvent() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState([]);
   const [amount, setAmount] = useState();
   const [items, setItems] = useState([]);
@@ -63,6 +65,7 @@ function CreateEvent() {
   useEffect(() => {
     if (eventID && userEvents.length > 0) {
       addEvent();
+      navigate(`/event/${eventID}`);
     }
   }, [eventID, userEvents]); 
   
