@@ -1,0 +1,12 @@
+.eventContainer{
+    background-color: rgba(122, 146, 167, 0.826);
+    margin: 10px 0 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    opacity: 50%;
+}
+
+.eventContainer:hover{
+    opacity: 100%;
+}
