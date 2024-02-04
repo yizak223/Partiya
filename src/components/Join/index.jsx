@@ -7,8 +7,11 @@ import {
 } from "@firebase/firestore";
 import { UserContext } from "../../components/context/User";
 import "../Join/Join.css";
+import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 
 function Join() {
+  const navgate = useNavigate()
   const [eventPINs, setEventPINs] = useState([]);
   const { user } = useContext(UserContext);
 
@@ -52,6 +55,8 @@ function Join() {
     const pin = e.target.eventPIN.value;
     console.log(pin);
     addPinToUser(pin);
+    navgate(`/event/${pin}`)
+
   };
 
   return (

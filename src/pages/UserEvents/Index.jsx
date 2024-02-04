@@ -4,7 +4,7 @@ import { UserContext } from '../../components/context/User'
 import { onAuthStateChanged } from '@firebase/auth'
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from '../../config/fireBaseConfig'
-import '../UserEvents/userEvent.css'
+import '../UserEvents/userEvent.css';
 import Modal from '../../components/Modal';
 
 export default function UserEvents() {
@@ -19,7 +19,7 @@ export default function UserEvents() {
                 if (user) {
                     const userRef = doc(db, "users", user.uid);
                     const userSnap = await getDoc(userRef);
-                    const events = userSnap.data().events;
+                    const events = userSnap.data().eventPIN;
                     setEvents(events);
                     console.log(events);
                 }
@@ -50,7 +50,7 @@ export default function UserEvents() {
                     )
                 })
             }
-             {modalOpen && <Modal setOpenModal={setModalOpen} />}
+             {modalOpen && <Modal  setOpenModal={setModalOpen} />}
             </div>
         </div>
     )
