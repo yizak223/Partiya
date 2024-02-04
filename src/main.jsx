@@ -1,8 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Home from "./pages/Home/index.jsx";
+import Auth from "./pages/Auth"
+import App from "./App.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
     <App />
-)
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/Auth" element={<Auth />} />
+    </Routes>
+  </BrowserRouter>
+);
