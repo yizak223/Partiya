@@ -1,8 +1,9 @@
 import React from 'react'
+import '../CreateEvent/CreateEvent.css'
 
 function CreateEvent() {
   return (
-    <div>
+    <div className='containerPlaning'>
       <h1>Great! now pick your planing</h1>
       <h5>Picnic</h5>
       <h5>Sea</h5>

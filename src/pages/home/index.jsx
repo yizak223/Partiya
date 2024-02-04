@@ -1,7 +1,6 @@
 import React from 'react'
 import Join from '../../components/Join'
-import CreateEvent from "../../components/CreateEvent";
-import { Link } from 'react-router-dom';
+
 
 function Home() {
   return (
@@ -11,7 +10,6 @@ function Home() {
         {/* <Link to="/createEvent">Create Event</Link>
         <Link to="/event:id">Join Event</Link> */}
       </div>
-
     </div>
   )
 }
