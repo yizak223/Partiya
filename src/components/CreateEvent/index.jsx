@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { callOpenAIAPI } from "../../config/openAiConfig";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../config/fireBaseConfig";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../components/context/User";
 
 function CreateEvent() {
@@ -9,6 +10,8 @@ function CreateEvent() {
   const [amount, setAmount] = useState();
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState({});
+  const [userEvents, setUserEvents] = useState([]);
+  const [eventID, setEventID] = useState();
   const {user} = useContext(UserContext);
 
   const changeHandler = (e) => {
@@ -57,11 +60,48 @@ function CreateEvent() {
   }
 
 
-  const addEventToDB = async() =>{
-    const docRef = await addDoc(collection(db, "events"), {...formData, managerID: user.id, items: items});
-    console.log("Event has been added to 'events' with the ID:", docRef.id);
-  }
-
+  useEffect(() => {
+    // Check if the event ID is defined and user events array is not empty
+    if (eventID && userEvents.length > 0) {
+      addEvent();
+    }
+  }, [eventID, userEvents]); // Run this effect whenever event ID or user events array changes
+  
+  const addEventToDB = async () => {
+    try {
+      const docRef = await addDoc(collection(db, 'events'), {
+        ...formData,
+        managerID: user.id,
+        items: items,
+      });
+      const eventId = docRef.id; // Get event ID
+      console.log("Event has been added to 'events' with the ID:", eventId);
+      setEventID(eventId); // Set event ID in state
+      // Now, you can call addEvent right after setting the eventID
+      addEvent(eventId);
+    } catch (error) {
+      console.error('Error adding event:', error);
+    }
+  };
+  
+  const addEvent = async (eventId) => {
+    try {
+      if (!eventId) {
+        console.error('Event ID is undefined');
+        return;
+      }
+  
+      const newUserRef = doc(db, 'users', user.id);
+      const updatedEventPINs = [...userEvents, eventId];
+      setUserEvents(updatedEventPINs);
+      await updateDoc(newUserRef, {
+        eventPIN: updatedEventPINs,
+      });
+      console.log('PIN Code Added To User!');
+    } catch (error) {
+      console.error('Error adding document: ', error);
+    }
+  };
   return (
     <div>
       <form onSubmit={submitHandler}>
