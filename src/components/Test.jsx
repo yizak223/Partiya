@@ -23,7 +23,7 @@ function Test() {
         });
         const nicknames = filtered.map((doc) => doc.data().nickname);
         setUsers(nicknames);
-        console.log("Updated users:", nicknames); // Log the updated users
+        console.log("Updated users:", nicknames);
       } catch (error) {
         console.error("Error fetching documents: ", error);
       }
