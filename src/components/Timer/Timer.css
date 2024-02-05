@@ -1,0 +1,16 @@
+.timeDisp{
+    display: flex;
+    font-size: 3em;
+    font-weight: bold;
+    gap: 5px;
+}
+.timeCont{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.symbols{
+    gap: 20px;
+}
