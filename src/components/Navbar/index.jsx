@@ -29,9 +29,6 @@ function Navbar() {
             <Link to="/" className="link" onClick={toggleMenu}>
               Home
             </Link>
-            <Link to="/Test" className="link" onClick={toggleMenu}>
-              test
-            </Link>
             {user ? (
               <Link to="/UserEvents" className="link" onClick={toggleMenu}>
                 MY-Events
