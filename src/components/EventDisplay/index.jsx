@@ -6,6 +6,7 @@ import { useContext } from 'react'
 import { db, auth } from '../../config/fireBaseConfig'
 import { onAuthStateChanged } from '@firebase/auth'
 import './EventDisplat.css'
+import Test from '../test';
 import Modal from '../Modal'
 
 function EventDisplay() {
@@ -106,9 +107,10 @@ function EventDisplay() {
   }, [])
   console.log(user);
   return (
-    <div>
-      <h1>{event?.name}</h1>
-      <div>
+    <div className='evantContainer'>
+      <h1 id='headlineEavent'>{event?.name}</h1>
+      <div className='itemsContainer'>
+      <Test/>
         {modalOpen && <Modal NameBring={NameBring} addItemToUser={addItemToUser} itemName={itemName} setOpenModal={setModalOpen} />}
         {event?.items.map((item, index) => (
           <div onClick={() => {

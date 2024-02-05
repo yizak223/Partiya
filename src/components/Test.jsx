@@ -19,7 +19,7 @@ function Test() {
         const ref = collection(db, "users");
         const mydocs = await getDocs(ref);
         const filtered = mydocs.docs.filter((item) => {
-          return item.data().eventPIN.includes("555");
+          return item.data().eventPIN.includes(eventId);
         });
         const nicknames = filtered.map((doc) => doc.data().nickname);
         setUsers(nicknames);
@@ -32,10 +32,25 @@ function Test() {
     get();
   }, [eventId]);
 
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   return (
     <>
       {users.map((user, index) => (
-        <div key={index}>{user}</div>
+        <p
+          className="userName"
+          key={index}
+          style={{ backgroundColor: getRandomColor() }}
+        >
+          {user.charAt(0)}
+        </p>
       ))}
     </>
   );
