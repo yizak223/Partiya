@@ -20,10 +20,12 @@ import { onAuthStateChanged } from "@firebase/auth";
 import "./EventDisplat.css";
 import Test from "../test";
 import Modal from "../Modal";
+import Timer from "../Timer";
 
 function EventDisplay() {
   const { eventId } = useParams();
   const { user, currentUser } = useContext(UserContext);
+  const [time, setTime] = useState();
 
   const [NameBring, setNameBring] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -64,6 +66,7 @@ function EventDisplay() {
           const docData = docSnapshot.data();
           console.log("Fetched event data:", docData);
           setEvent(docData);
+          setTime(docData.from);
         } else {
           console.log("No such document!");
         }
@@ -148,6 +151,7 @@ function EventDisplay() {
             </div>
           ))}
       </div>
+      <Timer targetDate={time} />
     </div>
   );
 }
