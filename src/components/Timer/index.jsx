@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./Timer.css";
 
-function CountdownTimer({ targetDate }) {
+function Timer({ targetDate }) {
   const calculateTimeLeft = () => {
     const difference = new Date(targetDate) - new Date();
     let timeLeft = {};
@@ -56,12 +56,4 @@ function CountdownTimer({ targetDate }) {
   );
 }
 
-function App() {
-  return (
-    <div>
-      <CountdownTimer targetDate="2024-03-01" />
-    </div>
-  );
-}
-
-export default App;
+export default Timer;
