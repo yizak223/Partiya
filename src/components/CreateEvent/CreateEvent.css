@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: space-around;
     height: 100vh;
-    background-image: linear-gradient(rgba(6, 4, 30, 0.804), rgba(4, 9, 30, 0.087)),
-    url("../../assets/images/campingBackG2.jpg");
+    background-image: linear-gradient(rgba(6, 4, 30, 0.135), rgba(158, 161, 172, 0.354)),
+    url("../../assets/images/campingBackG4.jpg");
 }
 .createEvent form{
     display: flex;
