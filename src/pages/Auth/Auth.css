@@ -1,103 +1,88 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+}
 .authCont{
     display: flex;
+    position: relative;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height: 90vh;
-    border-radius: 10px;
-    background-image: var(--bgPattern);
+    height: 95vh;
+    background-image: linear-gradient(rgba(6, 4, 30, 0.804), rgba(4, 9, 30, 0.087)),
+    url("../../assets/images/campingBackG2.jpg");
+    background-position: center;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
 }
 .loginCont{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 300px;
 }
 .loginCont p{
-    margin-top: -5px;
     font-weight: bold;
 }
 .loginCont h2{
-    color: var(--brownPink);
+    font-size: 60px;
+    letter-spacing: 12px;
+    color: #fff;
+}
+.headings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+}
+.headings p{
+    color: #858282;
+    font-size: 24px;
+    font-weight: 200;
 }
 .authForm input{
-    height: 30px;
+    height: 50px;
 }
 .authForm button{
-    height: 40px;
+    height: 69px;
+    position: absolute;
+    bottom: 7px;
+    width: 433px;
+    left: -2px;
+    background-color: var(--blue);
+    border: 0;
+    color: #fff;
+    font-size: 2em;
+    border-radius: 25px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.authForm label{
+    font-size: 20px;
+    font-weight: 900;
 }
 .authForm{
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    width: 300px;
+    width: 380px;
 }
 .toggleLog{
     transition: 0.2s;
+    margin-bottom: -78px;
+    color: #fff;
+    position: absolute;
+    bottom: 158px;
+}
+.registerTxt{
+    color: orangered;
 }
 .toggleLog:hover{
     cursor: pointer;
-    color: var(--green);
     transform: translateY(-2px);
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-:root{
-    font-family: 'Roboto', sans-serif;
-    --green: #008710;
-    --lightGreen: #a5e1ac;
-    --darkGray: #858282;
-    --darkGreen: rgba(30,99,49,1);
-}
-body{
-    margin: 0;
-    padding: 0;
-}
-/* button, .download{
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 10px;
-    background-color: var(--green);
-    font-weight: 500;
-    border: 0;
-    box-shadow: 0 5px 17px -2px #5b5b5b;
-    color: #fff;
-    text-decoration: none;
-    transition: 0.3s;
-}
-button:hover, .download:hover{
-    background-color: var(--darkGreen);
-    transform: translateY(-5px);
-}
-button:active, .download:active{
-    transform: translateY(0);
-} */
-.download{
-    height: 80px;
-    width: 300px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    margin: 5px 0;
-}
-input[data-autocompleted]{
-    background-color: transparent !important;
-}
-input:-webkit-autofill,
-input:-webkit-autofill:focus{
-    transition: background-color 600000s 0s, color 600000s 0s;
-}
-input, textarea{
-    margin-bottom: 10px;
-    margin-top: 3px;
-    border: 0;
-    outline: none;
-    transition: 0.3s;
-    border-bottom: 2px solid var(--darkGreen);
-    background-color: transparent;
-}
-input:focus, textarea:focus{
-    box-shadow: 0 16px 11px -16px var(--darkGreen);
-}
+
+

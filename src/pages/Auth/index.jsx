@@ -67,7 +67,12 @@ function Auth() {
                   <SignUp submitHandler={submitHandler} changeHandler={changeHandler} />
           }
           <p className="toggleLog" onClick={handleToggle} >
-              {isLoginMode ? "Don't have an account? Register" : "Have an account? Login"}
+              {isLoginMode ? <>
+                Don't have an account? <span className="registerTxt">Register</span> 
+              </>: 
+              <>
+              Have an account? <span className="registerTxt">Login</span>
+              </>}
           </p>
       </div>
   )

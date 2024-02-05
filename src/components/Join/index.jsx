@@ -19,6 +19,7 @@ function Join() {
         if (userDoc.exists) {
           const userData = userDoc.data();
           const eventPINsArray = userData.eventPIN || [];
+          //add query to eventPIN
           setEventPINs(eventPINsArray);
           console.log(eventPINs);
         } else {

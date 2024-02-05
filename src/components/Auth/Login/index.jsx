@@ -2,9 +2,12 @@ function Login(props){
 
   return (
       <div className="loginCont">
+        <div className="headings">
           <h2>Partiya</h2>
-          <p>Login</p>
+          <p>Plan with us!</p>
+        </div>
           <form className="authForm" onSubmit={props.submitHandler}>
+            <label htmlFor="email"><i class="bi bi-envelope-at-fill"></i> Email</label>
               <input
                   onChange={props.changeHandler}
                   type="email"
@@ -12,6 +15,7 @@ function Login(props){
                   placeholder="example123@email.com"
                   required
               />
+              <label htmlFor="password"><i class="bi bi-incognito"></i> Password</label>
               <input
                   onChange={props.changeHandler}
                   type="password"
