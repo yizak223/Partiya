@@ -5,10 +5,10 @@ import { onAuthStateChanged } from '@firebase/auth'
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from '../../config/fireBaseConfig'
 import '../UserEvents/userEvent.css';
-import Modal from '../../components/Modal';
+import { useNavigate } from 'react-router';
 
 export default function UserEvents() {
-    const [modalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate()
     const { user, currentUser } = useContext(UserContext)
     const [events, setEvents] = useState([])
     useEffect(() => {
@@ -42,15 +42,12 @@ export default function UserEvents() {
             {
                 events?.map((event, index) => {
                     return (
-                        <div className='eventContainer' key={index}>
-                            <h2 onClick={() => {
-                                setModalOpen(true);
-                            }}>{event}</h2>
+                        <div onClick={()=>{navigate(`/event/${event}`)}} className='eventContainer' key={index}>
+                            <h2>{event}</h2>
                         </div>
                     )
                 })
             }
-             {modalOpen && <Modal  setOpenModal={setModalOpen} />}
             </div>
         </div>
     )

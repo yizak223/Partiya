@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Modal.css";
 
-function Modal({ setOpenModal, itemName }) {
+
+function Modal({ setOpenModal, itemName, addItemToUser }) {
+
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -29,7 +32,7 @@ function Modal({ setOpenModal, itemName }) {
           >
             Cancel
           </button>
-          {/* <button>Continue</button> */}
+          <button onClick={()=>{addItemToUser(itemName)}}>Add me</button>
         </div>
       </div>
     </div>

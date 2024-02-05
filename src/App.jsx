@@ -22,7 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Auth" element={<Auth />} />
           <Route path="/createEvent" element={<CreateEvent />} />
-          <Route path="/event:id" element={<Join />} />
+          {/* <Route path="/event:id" element={<Join />} /> */}
           <Route path="/Test" element={<Test />} />
           <Route path="/event/:eventId" element={<EventDisplay />} />
           {user?

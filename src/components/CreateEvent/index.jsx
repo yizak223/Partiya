@@ -31,6 +31,7 @@ function CreateEvent() {
     console.log(response);
     setItems(newItems);
     console.log({items})
+    navigate('/')
   };
 
   const removeItem = (itemIndex) =>{
