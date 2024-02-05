@@ -1,48 +1,54 @@
-.evantContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 95vh;
-    overflow: scroll;
-    background-image: linear-gradient(rgba(6, 4, 30, 0.135), rgba(158, 161, 172, 0.354)),
+.evantContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 95vh;
+  overflow: scroll;
+  background-image: linear-gradient(
+      rgba(6, 4, 30, 0.135),
+      rgba(158, 161, 172, 0.354)
+    ),
     url("../../assets/images/campingBackG3.jpg");
-    background-position: center;
+  background-position: center;
 }
 
-
-.itemContainer{
-    background-color: #90ad51;
-    border-radius: 10px;
-    width: fit-content;
-    margin: 10px 0 0 0 ;
-    padding: 10px;
+.itemContainer {
+  background-color: #90ad51;
+  border-radius: 10px;
+  width: fit-content;
+  margin: 10px 0 0 0;
+  padding: 10px;
 }
 
-.itemsContainer{
-    background-color: rgba(240, 248, 255, 0.139);
-    border: 2px solid #cbcbcb;
-    width: 90%;
-    padding: 25px;
-    height: 82vh;
-    border-radius: 15px;
-    overflow-y: scroll;
-    
+.itemsContainer {
+  background-color: rgba(240, 248, 255, 0.139);
+  border: 2px solid #cbcbcb;
+  width: 90%;
+  padding: 25px;
+  height: 82vh;
+  border-radius: 15px;
+  overflow-y: scroll;
 }
 
-#headlineEavent{
-    margin: 5px;
-    color: aliceblue;
-    text-shadow: 0 0 5px black;
+#headlineEavent {
+  margin: 5px;
+  color: aliceblue;
+  text-shadow: 0 0 5px black;
 }
 
-.userName{
-    
-    display: flex;
-    width: fit-content;
-    text-align: end;
-    border: 2px solid black;
-    font-size: 15px;
-    font-weight: 900;
-    border-radius: 50%;
-    padding: 1px 4px;
+.userName {
+  display: flex;
+  width: fit-content;
+  text-align: end;
+  border: 2px solid black;
+  font-size: 15px;
+  font-weight: 900;
+  border-radius: 50%;
+  padding: 1px 4px;
+  margin: 3px;
+}
+
+.namesClass {
+  display: flex;
+  flex-direction: row-reverse;
 }
