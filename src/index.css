@@ -16,6 +16,26 @@
   margin: 0;
   box-sizing: border-box;
 }
-
-
+input{
+  outline: none;
+}input:focus, textarea:focus{
+  box-shadow: 0 16px 11px -16px var(--blue);
+}
+input[data-autocompleted]{
+  background-color: transparent !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus{
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+button{
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover, .download:hover{
+  transform: translateY(-5px);
+}
+button:active, .download:active{
+  transform: translateY(0);
+}
 
