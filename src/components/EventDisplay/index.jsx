@@ -1,21 +1,78 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { getDoc, doc } from '@firebase/firestore'
+import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDoc, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
 import { UserContext } from '../context/User'
 import { useContext } from 'react'
-import { db } from '../../config/fireBaseConfig'
+import { db, auth } from '../../config/fireBaseConfig'
+import { onAuthStateChanged } from '@firebase/auth'
 import './EventDisplat.css'
 import Modal from '../Modal'
 
 function EventDisplay() {
+  const { eventId } = useParams()
+  const { user } = useContext(UserContext)
+
   const [modalOpen, setModalOpen] = useState(false);
   const [event, setEvent] = useState()
   const [itemName, setItemName] = useState('')
-  const { eventId } = useParams()
-  const { user } = useContext(UserContext)
+  const [items, setItems] = useState([])
+  const [itemsDisplay, setItemsDisplay] = useState(null)
+  useEffect(()=>{
+    const renderItemsUser = () => {
+      onAuthStateChanged(auth, async (user) => {
+          if (user) {
+              const userRef = doc(db, "users", user.uid);
+              const userSnap = await getDoc(userRef);
+              const itemsDisplay = userSnap.data().items;
+              setItemsDisplay(itemsDisplay);
+              console.log(itemsDisplay);
+
+              // const collectionRef = collection(db, 'users');
+              // const qUser = query(collectionRef, where("items", "==", itemName));
+    
+              // const unsub = onSnapshot((qUser), (snapshot) =>
+              // setItemsDisplay(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
+              // return unsub
+
+          }
+      })
+  }
+  renderItemsUser()
+  },[])
+  // const getItemUser = async ()=> {
+  //   try {
+  //     const userRef = doc(db, "users", user.id)
+  //     const userDoc = await getDoc(userRef)
+  //     if (userDoc.exists) {
+  //       const userData = userDoc.data()
+  //       const eventPINsArray = userData.eventPIN || []
+  //       //add query to eventPIN
+  //       setEventPINs(eventPINsArray)
+  //       console.log(eventPINs);
+  //     } else {
+  //       console.log("No such document!");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error getting user document:", error);
+  //   }
+  // }
+
+  const addItemToUser = async (itemNameArgument) => {
+    try {
+      const newUserRef = doc(db, "users", user.id);
+      const updatedItems = [...items, itemNameArgument];
+      setItems(updatedItems)
+      await updateDoc(newUserRef, {
+        items: updatedItems,
+      });
+      console.log("Item Added To User!");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
+  }
   console.log(eventId);
   const bigShow = (itemName) => {
-      setItemName(itemName)
+    setItemName(itemName)
   }
   useEffect(() => {
     const fetchData = async () => {
@@ -41,10 +98,9 @@ function EventDisplay() {
   console.log(user);
   return (
     <div>
-
       <h1>{event?.name}</h1>
       <div>
-        {modalOpen && <Modal itemName={itemName} setOpenModal={setModalOpen} />}
+        {modalOpen && <Modal addItemToUser={addItemToUser} itemName={itemName} setOpenModal={setModalOpen} />}
         {event?.items.map((item, index) => (
           <div onClick={() => {
             bigShow(item.itemName)
@@ -57,6 +113,17 @@ function EventDisplay() {
             {/* <button onClick={()=>{bigShow(item.itemName)}}>bigShow</button> */}
           </div>
         ))}
+      </div>
+      <div>
+        {/* {itemsDisplay ? <>
+          <h1>my list</h1>
+          {itemsDisplay.map((item, index) => (
+            <div className='itemContainer' key={index}>
+              <p>item{item}</p>
+            </div>
+          ))}
+        </>
+          : null} */}
       </div>
     </div>
   )

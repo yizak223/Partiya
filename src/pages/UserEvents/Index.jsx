@@ -5,7 +5,6 @@ import { onAuthStateChanged } from '@firebase/auth'
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from '../../config/fireBaseConfig'
 import '../UserEvents/userEvent.css';
-import Modal from '../../components/Modal';
 import { useNavigate } from 'react-router';
 
 export default function UserEvents() {
