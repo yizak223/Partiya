@@ -21,6 +21,7 @@
   height: 50px;
   border-bottom: 1px solid #000103;
   padding: 10px;
+  transition: 1s;
 }
 
 .headeropen {
@@ -28,7 +29,8 @@
   background-color: #191f3d;
   border-bottom: 1px solid #000103;
   padding: 10px;
-  height: 210px;
+  height: 180px;
+  transition: 1s;
 }
 
 .hamburger {
@@ -51,15 +53,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 1s;
 }
 
 .navBaropen {
   width: 94vw;
-  height: 200px;
+  height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: start;
+  transition: 1s;
 }
+
 .logo {
   text-align: center;
   color: rgb(42, 71, 201);

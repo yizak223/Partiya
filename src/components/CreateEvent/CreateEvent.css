@@ -5,7 +5,7 @@
     justify-content: space-around;
     height: 100vh;
 
-    background-image: linear-gradient(rgba(6, 4, 30, 0.135), rgba(158, 161, 172, 0.354)),
+    background-image: linear-gradient(rgba(3, 1, 15, 0.763), rgba(175, 177, 185, 0)),
     url("../../assets/images/campingBackG4.jpg");
     background-position: center;
     background-repeat: repeat-y;
@@ -23,7 +23,7 @@
 .createEvent input{
     height: 50px; 
     border: 0;
-    border-bottom: 2px #fff solid;
+    border-bottom: 2px #bdbdbd solid;
     background-color: transparent;
     color: #fff;
     outline: none;
@@ -134,4 +134,7 @@
     box-shadow: 0 0 10px black;
     background-color: #17266e;
     color: #faf0f0;
+}
+.createEvent ::placeholder{
+    color: #3c85b3;
 }
