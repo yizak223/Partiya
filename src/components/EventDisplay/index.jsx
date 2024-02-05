@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import {
@@ -20,6 +21,8 @@ import { onAuthStateChanged } from "@firebase/auth";
 import "./EventDisplat.css";
 import Test from "../test";
 import Modal from "../Modal";
+import Timer from '../Timer';
+
 
 function EventDisplay() {
   const { eventId } = useParams();
@@ -33,6 +36,7 @@ function EventDisplay() {
   const [itemsDisplay, setItemsDisplay] = useState(null);
 
   useEffect(() => {
+
     const renderItemsUser = () => {
       onAuthStateChanged(auth, async (user) => {
         if (user) {
@@ -146,9 +150,10 @@ function EventDisplay() {
               <p>{item.itemName}</p>
               <p>{item.whoBrings}</p>
             </div>
-          ))}
-      </div>
-    </div>
+            <div>
+                 <Timer targetDate={time}/>
+              </div>
+
   );
 }
 
