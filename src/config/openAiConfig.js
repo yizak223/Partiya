@@ -20,7 +20,7 @@ const callOpenAIAPI = async (answer) => {
       },
     ],
     temperature: 0.7,
-    max_tokens: 100,
+    max_tokens: 50,
     top_p: 1,
   });
 

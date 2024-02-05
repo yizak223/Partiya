@@ -106,6 +106,7 @@ function CreateEvent() {
     }
   };
   return (
+    <>
     <div className="createEvent">
       <h1>Let's plan out our activity!</h1>
       <form onSubmit={submitHandler}>
@@ -156,29 +157,33 @@ function CreateEvent() {
         <input type="date" name="to" onChange={changeHandler} />
         <button type="submit">Generate</button>
       </form>
+    </div>
 
-      {items.length > 0 ? (
-        <div>
+    <div>
+    {items.length > 0 ? (
+        <div className="itemsCreateDisp">
           {items.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="itemCreateDisp">
                 <p>{item.itemName}</p>
-                <button onClick={() => removeItem(index)}><i className="bi bi-x"></i></button>
                 <form onSubmit={submitAmount(index)}>
-                  <input type="number" placeholder="Amount" onChange={amountHandler}/>
-                  <button>Add amount</button>
+                  <input className="createInput" type="number" placeholder="Amount" onChange={amountHandler}/>
+                  <button id="createBtn">+</button>
                 </form>
+                <button onClick={() => removeItem(index)}><i className="bi bi-x"></i></button>
               </div>
             );
           })}
           <form onSubmit={submitNewItem}>
-            <input type="text" placeholder="Add another item:" onChange={newItemHandler}/>
-            <button>Add +</button>
+            <input type="text" id="addInput" placeholder="Add another item:" onChange={newItemHandler}/>
+            <button id="addBtn">Add </button>
           </form>
         </div>
       ) : null}
-      <button onClick={addEventToDB}>Let's start the party!</button>
+      <button id="startBtn" onClick={addEventToDB}>Let's start the party!</button>
     </div>
+
+    </>
   );
 }
 
