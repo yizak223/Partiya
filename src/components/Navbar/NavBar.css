@@ -1,35 +1,73 @@
 .menuContainer {
-    display: none;
-  }
-  
-  .menuContainer.open {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  
-  .line {
-    width: 25px;
-    height: 3px;
-    background-color: rgb(255, 255, 255);
-    margin: 3px 0;
-    transition: all 0.3s ease;
-  }
+  display: none;
+}
 
-  .navBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-  }
-  
-  .logo {
-    color: rgb(42, 71, 201);
-    font-weight: 900;
-    margin: 0; 
-  }
-  
+.menuContaineropen {
+  width: 25px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuContaineropen a{
+  margin: 5px 0 5px 0;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+header {
+  height: 54px;
+  background-color: #191f3d;
+  border-bottom: 1px solid #000103;
+  padding: 10px;
+}
+
+.headeropen {
+  position: static;
+  top: 0;
+  width: 100%;
+  height: 200px;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.line {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  margin: 3px 0;
+  transition: all 0.3s ease;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.logo {
+  text-align: center;
+  color: rgb(42, 71, 201);
+  font-weight: 900;
+  font-size: 25px;
+  margin: 0;
+}
+
+#BtnNavBar {
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  background-color: #dadeec;
+  border: none;
+}
+
+#iconNavBar{
+  color: #191f3d;
+  font-size: 15px;
+  font-weight: 900;
+}

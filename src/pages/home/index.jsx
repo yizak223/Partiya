@@ -17,7 +17,7 @@ function Home() {
       <div className="home">
         <div className="titelsContainer">
           <h1 className="wellcomeTitle">Partiya</h1>
-          <h2 className="secondTitle">paln with us!</h2>
+          <h2 className="secondTitle">Plan with us!</h2>
           <div className="homeBtns">
             <button className="btnEvent" onClick={pathToCreate}>
               Create Event

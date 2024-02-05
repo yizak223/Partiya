@@ -1,17 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth, db } from "../../config/fireBaseConfig";
-import {
-  doc,
-  updateDoc,
-  getDoc,
-} from "@firebase/firestore";
+import { doc, updateDoc, getDoc } from "@firebase/firestore";
 import { UserContext } from "../../components/context/User";
 import "../Join/Join.css";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 
 function Join() {
-  const navgate = useNavigate()
+  const navgate = useNavigate();
   const [eventPINs, setEventPINs] = useState([]);
   const { user } = useContext(UserContext);
 
@@ -38,13 +34,21 @@ function Join() {
 
   const addPinToUser = async (pin) => {
     try {
+      console.log(pin);
       const newUserRef = doc(db, "users", user.id);
-      const updatedEventPINs = [...eventPINs, pin];
-      setEventPINs(updatedEventPINs);
-      await updateDoc(newUserRef, {
-        eventPIN: updatedEventPINs,
-      });
-      console.log("PIN Code Added To User!");
+      const userDoc = await getDoc(newUserRef);
+      const userEventData = userDoc.data().eventPIN || [];
+
+      if (!userEventData.includes(pin)) {
+        const updatedEventPINs = [...userEventData, pin];
+        setEventPINs(updatedEventPINs);
+        await updateDoc(newUserRef, {
+          eventPIN: updatedEventPINs,
+        });
+        console.log("PIN Code Added To User!");
+      } else {
+        console.log("PIN Code already exists for the user!");
+      }
     } catch (error) {
       console.error("Error adding document: ", error);
     }
@@ -55,8 +59,7 @@ function Join() {
     const pin = e.target.eventPIN.value;
     console.log(pin);
     addPinToUser(pin);
-    navgate(`/event/${pin}`)
-
+    navgate(`/event/${pin}`);
   };
 
   return (
