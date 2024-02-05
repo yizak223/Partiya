@@ -26,7 +26,7 @@ function EventDisplay() {
   const { eventId } = useParams();
   const { user, currentUser } = useContext(UserContext);
   const [time, setTime] = useState();
-
+  const [index, setIndex] = useState(0)
   const [NameBring, setNameBring] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [event, setEvent] = useState([]);
@@ -98,25 +98,32 @@ function EventDisplay() {
   const addItemToUser = async (itemNameArgument) => {
     try {
       const newWhoBringsRef = doc(db, "events", eventId);
-      const newWhoBrings = [...NameBring, currentUser.nickname];
+   
+   const newWhoBrings = [currentUser.nickname];
 
-      setNameBring(newWhoBrings);
-
-      await updateDoc(newWhoBringsRef, {
-        items: {
-          whoBrings: {
-            arrayUnion: newWhoBrings,
-          },
-        },
+      // setNameBring(newWhoBrings);
+      const updatedItems = event.items.map((item, i) => {
+        if (i === index) {
+          return {
+            ...item,
+            whoBrings: [...item.whoBrings, currentUser.nickname],
+          };
+        }
+        return item;
       });
+
+console.log();
+
+      await updateDoc(newWhoBringsRef, { items: updatedItems });
 
       console.log("user was added ", newWhoBrings);
     } catch (error) {
       console.error("Error adding document: ", error);
     }
   };
-  const bigShow = (itemName) => {
+  const bigShow = (itemName,index) => {
     setItemName(itemName);
+    setIndex(index)
   };
 
   return (
@@ -130,15 +137,17 @@ function EventDisplay() {
           <Modal
             NameBring={NameBring}
             addItemToUser={addItemToUser}
+            index={index}
             itemName={itemName}
             setOpenModal={setModalOpen}
           />
         )}
+        {console.log(event)}
         {event?.items &&
-          event.items.map((item, index) => (
+          event.items?.map((item, index) => (
             <div
               onClick={() => {
-                bigShow(item.itemName);
+                bigShow(item.itemName, index);
                 setModalOpen(true);
                 console.log(1);
               }}
