@@ -9,25 +9,26 @@
   flex-direction: column;
 }
 
-.menuContaineropen a{
+.menuContaineropen a {
   margin: 5px 0 5px 0;
   color: #fff;
   text-decoration: none;
   font-size: 20px;
 }
 
-header {
-  height: 54px;
+.header {
   background-color: #191f3d;
+  height: 50px;
   border-bottom: 1px solid #000103;
   padding: 10px;
 }
 
 .headeropen {
-  position: static;
-  top: 0;
-  width: 100%;
-  height: 200px;
+  height: 50px;
+  background-color: #191f3d;
+  border-bottom: 1px solid #000103;
+  padding: 10px;
+  height: 210px;
 }
 
 .hamburger {
@@ -45,11 +46,20 @@ header {
 }
 
 .navBar {
+  width: 90vw;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navBaropen {
+  width: 90vw;
+  height: 200px;
   display: flex;
   justify-content: space-between;
   align-items: start;
 }
-
 .logo {
   text-align: center;
   color: rgb(42, 71, 201);
@@ -66,7 +76,7 @@ header {
   border: none;
 }
 
-#iconNavBar{
+#iconNavBar {
   color: #191f3d;
   font-size: 15px;
   font-weight: 900;

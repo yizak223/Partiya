@@ -14,7 +14,7 @@ function Navbar() {
 
   return (
     <header className={`header${isMenuOpen ? "open" : ""}`}>
-      <nav className="navBar">
+      <nav className={`navBar${isMenuOpen ? "open" : ""}`}>
         <div>
           <div className="hamburger" onClick={toggleMenu}>
             <div className="line"></div>
