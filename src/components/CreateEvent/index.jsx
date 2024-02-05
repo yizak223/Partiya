@@ -5,6 +5,7 @@ import { db } from "../../config/fireBaseConfig";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../components/context/User";
 import { useNavigate } from "react-router";
+import "./CreateEvent.css";
 
 function CreateEvent() {
   const navigate = useNavigate()
@@ -104,7 +105,8 @@ function CreateEvent() {
     }
   };
   return (
-    <div>
+    <div className="createEvent">
+      <h1>Let's plan out our activity!</h1>
       <form onSubmit={submitHandler}>
         <label>The Name</label>
         <input
@@ -146,7 +148,7 @@ function CreateEvent() {
           onChange={changeHandler}
         />
 
-        <label>Dates</label>
+        <label className="dates">Dates</label>
         <label>From</label>
         <input type="date" name="from" onChange={changeHandler} />
         <label>To</label>
@@ -173,7 +175,7 @@ function CreateEvent() {
             <button>Add +</button>
           </form>
         </div>
-      ) : <h1>no items{console.log({items})}</h1>}
+      ) : null}
       <button onClick={addEventToDB}>Let's start the party!</button>
     </div>
   );

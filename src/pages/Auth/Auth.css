@@ -1,16 +1,9 @@
-:root{
-    font-family: 'Roboto', sans-serif;
-    --blue: #5264a0;
-    --lightGreen: #a5e1ac;
-    --darkGray: #858282;
-    --darkGreen: rgba(30,99,49,1);
-}
+
 body{
     margin: 0;
     padding: 0;
     overflow-y: hidden;
 }
-
 .authCont{
     display: flex;
     position: relative;
@@ -93,22 +86,3 @@ body{
 }
 
 
-input[data-autocompleted]{
-    background-color: transparent !important;
-}
-input:-webkit-autofill,
-input:-webkit-autofill:focus{
-    transition: background-color 600000s 0s, color 600000s 0s;
-}
-input, textarea{
-    margin-bottom: 10px;
-    margin-top: 3px;
-    border: 0;
-    outline: none;
-    transition: 0.3s;
-    border-bottom: 2px solid #000;
-    background-color: transparent;
-}
-input:focus, textarea:focus{
-    box-shadow: 0 16px 11px -16px var(--blue);
-}
