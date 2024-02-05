@@ -8,6 +8,7 @@ import { onAuthStateChanged } from '@firebase/auth'
 import './EventDisplat.css'
 import Test from '../test';
 import Modal from '../Modal'
+import Timer from '../Timer';
 
 function EventDisplay() {
   const { eventId } = useParams()
@@ -19,6 +20,7 @@ function EventDisplay() {
   const [itemName, setItemName] = useState('')
   const [items, setItems] = useState([])
   const [itemsDisplay, setItemsDisplay] = useState(null)
+  const [time, setTime] = useState();
   useEffect(()=>{
     const renderItemsUser = () => {
       onAuthStateChanged(auth, async (user) => {
@@ -91,8 +93,9 @@ function EventDisplay() {
         const docSnapshot = await getDoc(eventDoc)
         if (docSnapshot.exists()) {
           const docData = docSnapshot.data()
+          setTime(docData)
           console.log(docData);
-          setEvent(docData)
+          setEvent(docData.from);
           console.log(event);
         }
         else {
@@ -126,7 +129,7 @@ function EventDisplay() {
         ))}
       </div>
       <div>
-        {/* {itemsDisplay ? <>
+        {itemsDisplay ? <>
           <h1>my list</h1>
           {itemsDisplay.map((item, index) => (
             <div className='itemContainer' key={index}>
@@ -134,7 +137,8 @@ function EventDisplay() {
             </div>
           ))}
         </>
-          : null} */}
+          : null}
+          <Timer targetDate={time}/>
       </div>
     </div>
   )
