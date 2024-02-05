@@ -10,8 +10,9 @@ import Modal from '../Modal'
 
 function EventDisplay() {
   const { eventId } = useParams()
-  const { user } = useContext(UserContext)
-
+  const { user ,currentUser} = useContext(UserContext)
+  
+  const [NameBring, setNameBring] = useState([])
   const [modalOpen, setModalOpen] = useState(false);
   const [event, setEvent] = useState()
   const [itemName, setItemName] = useState('')
@@ -59,21 +60,29 @@ function EventDisplay() {
 
   const addItemToUser = async (itemNameArgument) => {
     try {
-      const newUserRef = doc(db, "users", user.id);
-      const updatedItems = [...items, itemNameArgument];
-      setItems(updatedItems)
-      await updateDoc(newUserRef, {
-        items: updatedItems,
+      const newWhoBringsRef = doc(db, "events", eventId);
+      const newWhoBrings = [...NameBring, currentUser.nickname];
+  
+      setNameBring(newWhoBrings);
+  
+      await updateDoc(newWhoBringsRef, {
+        items: {
+          whoBrings: {
+            arrayUnion: newWhoBrings,
+          },
+        },
       });
-      console.log("Item Added To User!");
+  
+      console.log('user was added ', newWhoBrings);
     } catch (error) {
       console.error("Error adding document: ", error);
     }
-  }
+  };
   console.log(eventId);
   const bigShow = (itemName) => {
     setItemName(itemName)
   }
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -100,7 +109,7 @@ function EventDisplay() {
     <div>
       <h1>{event?.name}</h1>
       <div>
-        {modalOpen && <Modal addItemToUser={addItemToUser} itemName={itemName} setOpenModal={setModalOpen} />}
+        {modalOpen && <Modal NameBring={NameBring} addItemToUser={addItemToUser} itemName={itemName} setOpenModal={setModalOpen} />}
         {event?.items.map((item, index) => (
           <div onClick={() => {
             bigShow(item.itemName)
