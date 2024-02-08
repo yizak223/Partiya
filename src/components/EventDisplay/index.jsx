@@ -26,7 +26,7 @@ function EventDisplay() {
   const { eventId } = useParams();
   const { user, currentUser } = useContext(UserContext);
   const [time, setTime] = useState();
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
   const [NameBring, setNameBring] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [event, setEvent] = useState([]);
@@ -43,13 +43,6 @@ function EventDisplay() {
           const itemsDisplay = userSnap.data().items;
           setItemsDisplay(itemsDisplay);
           console.log(itemsDisplay);
-
-          // const collectionRef = collection(db, 'users');
-          // const qUser = query(collectionRef, where("items", "==", itemName));
-
-          // const unsub = onSnapshot((qUser), (snapshot) =>
-          // setItemsDisplay(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
-          // return unsub
         }
       });
     };
@@ -58,48 +51,28 @@ function EventDisplay() {
 
   useEffect(() => {
     console.log("Event ID:", eventId);
-    const fetchData = async () => {
-      try {
-        const eventDoc = doc(db, "events", eventId);
-        const docSnapshot = await getDoc(eventDoc);
+    const unsubscribe = onSnapshot(
+      doc(db, "events", eventId),
+      (docSnapshot) => {
         if (docSnapshot.exists()) {
           const docData = docSnapshot.data();
-          console.log("Fetched event data:", docData);
+          // console.log("Fetched event data:", docData);
           setEvent(docData);
           setTime(docData.from);
         } else {
           console.log("No such document!");
         }
-      } catch (error) {
-        console.log("Error getting document:", error);
       }
-    };
-    fetchData();
-  }, [eventId]);
+    );
 
-  // const getItemUser = async ()=> {
-  //   try {
-  //     const userRef = doc(db, "users", user.id)
-  //     const userDoc = await getDoc(userRef)
-  //     if (userDoc.exists) {
-  //       const userData = userDoc.data()
-  //       const eventPINsArray = userData.eventPIN || []
-  //       //add query to eventPIN
-  //       setEventPINs(eventPINsArray)
-  //       console.log(eventPINs);
-  //     } else {
-  //       console.log("No such document!");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error getting user document:", error);
-  //   }
-  // }
+    return () => unsubscribe();
+  }, [eventId]);
 
   const addItemToUser = async (itemNameArgument) => {
     try {
       const newWhoBringsRef = doc(db, "events", eventId);
-   
-   const newWhoBrings = [currentUser.nickname];
+
+      const newWhoBrings = [currentUser.nickname];
 
       // setNameBring(newWhoBrings);
       const updatedItems = event.items.map((item, i) => {
@@ -112,7 +85,7 @@ function EventDisplay() {
         return item;
       });
 
-console.log();
+      console.log();
 
       await updateDoc(newWhoBringsRef, { items: updatedItems });
 
@@ -121,9 +94,9 @@ console.log();
       console.error("Error adding document: ", error);
     }
   };
-  const bigShow = (itemName,index) => {
+  const bigShow = (itemName, index) => {
     setItemName(itemName);
-    setIndex(index)
+    setIndex(index);
   };
 
   return (
@@ -142,7 +115,7 @@ console.log();
             setOpenModal={setModalOpen}
           />
         )}
-        {console.log(event)}
+        {/* {console.log(event)} */}
         {event?.items &&
           event.items?.map((item, index) => (
             <div
