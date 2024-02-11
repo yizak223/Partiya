@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
 .home {
   display: flex;
   flex-direction: column;
@@ -23,6 +24,8 @@
   font-size: 60px;
   margin: 0;
   letter-spacing: 12px;
+  font-family: 'Dokdo', system-ui;
+  text-shadow: 2px 2px 2px #3953d4;
 }
 
 .titelsContainer h2 {
