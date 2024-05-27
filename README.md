@@ -14,8 +14,13 @@ Gives you an answer to what you need to bring to each friends's meeting, includi
     <p>The application offers an option to make a list where the administrator can create it and associate each item with a member of the list.</p>
   <h3>AI integration</h3>
     <p>The creation of the list for the event can be done by artificial intelligence, preventing the lack of an item on the list.</p>
-    
-  <h1>Technologies Used</h1>
+
+## Contributors
+
+- [Nir Gluskin](https://github.com/nirglus)
+- [Yitzhak Alaluf](https://github.com/yizak223)
+
+## Technologies Used
   <h3>Front-End</h3>
     <li>HTML, CSS</li>
     <li>React.js</li>
