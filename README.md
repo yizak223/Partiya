@@ -19,6 +19,7 @@ Gives you an answer to what you need to bring to each friends's meeting, includi
 
 - [Nir Gluskin](https://github.com/nirglus)
 - [Yitzhak Alaluf](https://github.com/yizak223)
+- [Matan Talmid](https://github.com/Matantalmid)
 
 ## Technologies Used
   <h3>Front-End</h3>
